@@ -47,9 +47,9 @@ App::get('log')->write('aaa','systemInfo');\
 
 #模型
 ###模型的插入方法
-所有定义的模型都必须要继承compass\cores\Model基类模型
-namespace model;
-use compass\cores\Model;
+所有定义的模型都必须要继承compass\cores\Model基类模型\
+namespace model;\
+use compass\cores\Model;\
 
 class Article extends Model
 {
@@ -67,14 +67,14 @@ class Article extends Model
             'cateid'=>1,
         ]);
     }
-}
+}\
 ###模型更新操作
-//获取10850id数据
-$this->get(10850);
-//修改title字段
-$this->title='builder';
-//保存,写库
-$this->save();
+//获取10850id数据\
+$this->get(10850);\
+//修改title字段\
+$this->title='builder';\
+//保存,写库\
+$this->save();\
 
 #控制器
 在控制器中继承基类控制器
