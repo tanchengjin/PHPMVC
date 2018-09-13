@@ -45,6 +45,37 @@ $app->bind('服务名',完整命名空间路径);
 使用App容器获取log类并调用log类中的write方法进行日志写入\
 App::get('log')->write('aaa','systemInfo');\
 
+#模型
+###模型的插入方法
+所有定义的模型都必须要继承compass\cores\Model基类模型
+namespace model;
+use compass\cores\Model;
+
+class Article extends Model
+{
+    //指定数据表前置
+    protected $prefix='blog_';
+    //指定数据表名
+    protected $table='test';
+    public function index(){
+    //执行插入方法
+        $this->insert([
+            'title'=>'test',
+            'textdesc'=>'test',
+            'author'=>'test',
+            'content'=>'test',
+            'cateid'=>1,
+        ]);
+    }
+}
+###模型更新操作
+//获取10850id数据
+$this->get(10850);
+//修改title字段
+$this->title='builder';
+//保存,写库
+$this->save();
+
 #控制器
 在控制器中继承基类控制器
 use compass\cores\Controller;\

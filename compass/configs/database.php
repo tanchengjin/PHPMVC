@@ -15,7 +15,7 @@ return array(
     #数据库密码
     'password'=>'',
     #数据库名称
-    'dbName'=>'test',
+    'dbName'=>'blog',
     #端口
     'port'=>'3306',
     #字符集编码

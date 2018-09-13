@@ -8,12 +8,13 @@ namespace app\index\controller;
 
 
 use compass\cores\Controller;
-use compass\cores\Log;
-use compass\cores\Route;
+use model\Article;
 
 class Index extends Controller
 {
     public function index(){
+        $article=new Article();
+        $article->index();
         return $this->fetch('',[
             'variable'=>'compass',
         ]);

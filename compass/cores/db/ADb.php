@@ -118,7 +118,7 @@ abstract class ADb
         return $this->query($sql);
     }
 
-    public function update($data,$id=null,$index='index'){
+    public function update($data,$id=null,$index='id'){
         if(is_array($data)){
             $sql="UPDATE {$this->table} SET ";
             $set='';

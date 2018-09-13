@@ -140,7 +140,9 @@ class Route
      */
     private function setUrlParam($variable,$modle){
         $urls=self::$rules[$modle][$variable[0]]['route'];
-        $params=self::$rules[$modle][$variable[0]]['params'];
+        if(isset(self::$rules[$modle][$variable[0]]['params'])){
+            $params=self::$rules[$modle][$variable[0]]['params'];
+        }
         $variableLen=count($variable)-1;
         //如果地址栏值大于路由所定义的变量则忽略多余的变量
         for($i=1;$i<=$variableLen;$i++){
