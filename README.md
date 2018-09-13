@@ -59,14 +59,14 @@ class Article extends Model
     protected $table='test';
     public function index(){
     //执行插入方法
-        $this->insert([
-            'title'=>'test',
-            'textdesc'=>'test',
-            'author'=>'test',
-            'content'=>'test',
-            'cateid'=>1,
-        ]);
-    }
+        $this->insert([\
+            'title'=>'test',\
+            'textdesc'=>'test',\
+            'author'=>'test',\
+            'content'=>'test',\
+            'cateid'=>1,\
+        ]);\
+    }\
 }\
 ###模型更新操作
 //获取10850id数据\
