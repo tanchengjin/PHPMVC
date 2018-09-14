@@ -14,12 +14,6 @@ class Article extends Model
     protected $prefix='blog_';
     protected $table='test';
     public function index(){
-        $this->insert([
-            'title'=>'1',
-            'content'=>'1',
-            'textdesc'=>'1',
-            'author'=>'1',
-            'cateid'=>3
-        ]);
+        $this->delete(10846);
     }
 }

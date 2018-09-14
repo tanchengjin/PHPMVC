@@ -66,4 +66,8 @@ class Model
     protected function insert($param=array()){
         return $this->db->insert($param);
     }
+    //模型删除
+    protected function delete($id){
+        return $this->db->delete($id);
+    }
 }
