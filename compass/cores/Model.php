@@ -62,6 +62,15 @@ class Model
 //            }
         }
     }
+
+    /**
+     * 原生sql
+     * @param $sql string sql语句
+     * @return mixed
+     */
+    protected function query($sql){
+        return $this->db->query($sql);
+    }
     //模型插入
     protected function insert($param=array()){
         return $this->db->insert($param);

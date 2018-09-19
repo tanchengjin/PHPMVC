@@ -19,6 +19,7 @@ abstract class ADb
     protected $order;
     protected $field;
     protected $table;
+    protected $limit;
     //将配置文件中的参数加载到configs变量中
     public function __construct()
     {
@@ -59,6 +60,15 @@ abstract class ADb
     //排序
     public function order($order){
         $this->order=" ORDER BY {$order}";
+        return $this;
+    }
+    //获取条数数据
+    public function limit($start,$end=null){
+        if(!is_null($start) && !is_null($end)){
+            $this->limit=" limit ".$start.','.$end;
+        }else{
+            $this->limit=" limit ".$start;
+        }
         return $this;
     }
     public function insert($params=array()){
@@ -154,6 +164,12 @@ abstract class ADb
         }
         if(!empty($this->where)){
             $sql.=$this->where;
+        }
+        if(!empty($this->order)){
+            $sql.=$this->order;
+        }
+        if(!empty($this->limit)){
+            $sql.=$this->limit;
         }
         return $this->query($sql);
     }

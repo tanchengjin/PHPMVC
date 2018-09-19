@@ -30,14 +30,14 @@ class Route
         $controller_file=$module.'/'.'controller/'.$this->controller.'.php';
         #模块是否存在
         if(!is_dir($module)){
-            throw new \Exception($GLOBALS['lang']['module_not_exists'].$module);
+            var_dump(App::get('language')['module_not_exists']);die;
         }
         #控制器是否存在
         if(is_file($controller_file)){
             $controller_file= 'app\\'.$this->module.'\\controller\\'.$this->controller;
             $controller=new $controller_file();
         }else{
-            throw new \Exception($GLOBALS['lang']['ctrl_not_exists'].$controller_file);
+            var_dump(App::get('language')['ctrl_not_exists'].':'.$controller_file);die;
         }
         #获取方法名
         $action=$this->action;
@@ -46,7 +46,7 @@ class Route
             #调用控制器对应方法
             $controller->$action();
         }else{
-            throw new \Exception($GLOBALS['lang']['action_not_exists'].$controller_file.'->'.$action.'()');
+            var_dump(App::get('language')['action_not_exists']);die;
         }
     }
     /**
@@ -65,6 +65,20 @@ class Route
             $urls=$this->checkVirtualDomainName();
             //将控制器方法组合成url来判断路由中是否已经注册
             $strUrl=implode('/',$urls);
+            //检测是否存在?p=1参数复制
+            if(strpos($strUrl,'?')){
+                $strUrl=explode('?',$strUrl);
+                $strLen=count($strUrl)-1;
+                //将?p=1参数转为为get参数
+                for ($i=1;$i<=$strLen;$i++){
+                    $params=explode('=',$strUrl[$i]);
+                    $key=$params[0];
+                    $val=$params[1];
+                    unset($strUrl[$i]);
+                }
+                //数组转换为字符串
+                $strUrl=$strUrl[0];
+            }
             //判断是否为get提交
             if($_SERVER['REQUEST_METHOD'] == 'GET'){
                 //路由已注册,并不存在参数

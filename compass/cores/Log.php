@@ -7,7 +7,7 @@
  */
 
 namespace compass\cores;
-require_once "log\driver\\file\File.php";
+require_once COMPASS."/cores/log/driver/file/File.php";
 use compass\cores\log\ALog;
 
 class Log
